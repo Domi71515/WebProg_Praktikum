@@ -314,6 +314,11 @@ article>.flexbox>.img {
   margin: auto 0 auto 0;
 }
 
+article>.flexbox>.img img {
+  width: 300px;
+  height: auto;
+}
+
 article>.flexbox>.text {
   grid-column-start: 2;
   grid-column-end: 2;
