@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>shoppingcart</title>
+  </head>
+  <body>
+    <header>
+      <h1>Shoppingcart</h1>
+    </header>
+    
+<!--    Navigation-->
+    <nav>
+      <ul>
+        <li><a href="index.html" alt="Home">Home</a></li>
+        <li><a href="register.html" alt="Register">Register</a></li>
+        <li><a href="shoppingcart.html" alt="Shoppingcart">Shoppingcart</a></li>
+        <li><a href="impressum.html" alt="Impressum">Impressum</a></li>
+      </ul>
+    </nav>
+    <img src="./img/img2.jpg">
+	  <p>Description</p>
+	  <p>Price: 100$</p>
+	  <p>4 in stock</p>
+	   <section id="number">
+          <form action="index.html" method="get">
+            <select name="number">
+			        <option value="0">0</option>
+              <option selected="selected" value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </form>
+        </section>
+<!--    Form for submitting Buy action -->
+    <form method="post" action="buy.html">
+      <input type="submit" value="Buy">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,208 @@
+/* Navigation */
+
+nav {
+    height: 180px;
+}
+
+nav #brand {
+    margin-top: 25px;
+}
+
+nav ul {
+    display: none;
+}
+
+nav #burgerMenu {
+    display: unset;
+    float: right;
+    height: 100%;
+}
+
+nav #burgerMenu img {
+    margin-top: 35px;
+    height: 100px;
+}
+
+/* Header */
+
+header {
+    height: 400px;
+}
+
+header .button {
+    display: none;
+}
+
+header>section {
+    top: 30%;
+}
+
+header h1 {
+    font-size: 4rem;
+}
+
+footer {
+    height: 500px;
+}
+
+/* CLASSES */
+
+.grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "registerForm";
+}
+
+.twogrid {
+    column-count: 1;
+}
+
+/* Register */
+
+.registerPicture {
+    display: none;
+}
+
+.registerForm input {
+    font-size: 50px;
+}
+
+.registerForm>section {
+    font-size: 50px;
+}
+
+/* Main */
+
+main {
+    min-height: calc(100% - 1000px);
+}
+
+main .flexbox {
+    display: grid;
+    flex-direction: flex-flow;
+    column-count: 1;
+    grid-template-columns: 1fr;
+}
+
+main #impressum {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+main #headquarters {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    text-align: left;
+    padding: 10px 0 20px 0;
+}
+
+#headquarters img {
+    width: 100%;
+}
+
+/* Footer */
+
+footer {
+    height: auto;
+    text-align: center;
+}
+
+footer h3 {
+    font-size: 40px;
+}
+
+footer section {
+    font-size: 25px;
+}
+
+footer .flexbox {
+    display: grid;
+    flex-direction: flex-flow;
+    column-count: 1;
+    grid-template-columns: 1fr;
+    max-width: 1024px;
+}
+
+footer #about {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+footer #links {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+footer #impressum {
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+footer ul {
+    padding-left: 0;
+}
+
+/* LOGIN */
+
+#login {
+    height: 120px;
+    line-height: 140px;
+}
+
+#login input[type="text"] {
+    font-size: 40px;
+    border-radius: 50vh 0 0 50vh;
+    padding: 8px 10px;
+    border: 1px solid var(--main-text-color);
+    outline: none;
+}
+
+#login input[type="text"]:focus {
+    border-radius: 50vh 0 0 50vh;
+    border-color: var(--main-accent-color);
+}
+
+#login .button {
+    font-size: 40px;
+    border-radius: 0 50vh 50vh 0;
+    outline: none;
+}
+
+/* SEARCH */
+
+#searchfilter {
+    height: 120px;
+    line-height: 140px;
+}
+
+#searchfilter input[type="search"] {
+    font-size: 40px;
+    border-radius: 50vh 0 0 50vh;
+    padding: 8px 10px;
+    border: 1px solid var(--main-text-color);
+    outline: none;
+}
+
+#searchfilter input[type="search"]:focus {
+    border-radius: 50vh 0 0 50vh;
+    border-color: var(--main-accent-color);
+}
+
+#searchfilter .button {
+    font-size: 40px;
+    border-radius: 0 50vh 50vh 0;
+    outline: none;
+}
+
+/* FILTER*/
+#searchfilter select {
+    font-size: 40px;
+    border-radius: 50vh 0 0 50vh;
+    padding: 8px 10px;
+    border: 1px solid var(--main-text-color);
+    outline: none;
+  }
+  
+  #searchfilter select:focus {
+    border-radius: 50vh 0 0 50vh;
+    border-color: var(--main-accent-color);
+  }
