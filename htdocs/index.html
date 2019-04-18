@@ -47,80 +47,86 @@
       <input type="submit" value="Login" class="button">
     </form>
   </section>
-  <!-- Form for Search, redirects to search.html   -->
+
   <section id="searchfilter">
-    <form action="search.html" method="get">
-      <input type="search" name="search" placeholder="Search...">
-      <input type="submit" value="search" class="button">
-    </form>
     <!-- Form for Filters, if selected, it will only show Articels in its section -->
     <form action="index.html" method="get">
+      <input type="search" name="search" placeholder="Search...">
       <select name="filter">
         <option value="car">Cars</option>
         <option value="train">Trains</option>
         <option value="ship">Ships</option>
         <option value="airplane">Airplanes</option>
       </select>
-      <input type="submit" value="Go" class="button">
+      <input type="submit" value="search" class="button">
     </form>
   </section>
   <main>
     <!-- Placeholder for Articles      -->
     <article>
-      <table>
-        <tr>
-          <th>
-            <img src="./img/img1.jpg">
-          </th>
-          <th>
+      <section class="flexbox">
+        <section class="img">
+            <img class="img" src="./img/img1.jpg">
+        </section>
+  
+        <section class="text">
             <a href="oldbus.html">
-              <h2>Old Bus</h2>
-              <p>Lorem Ipsum</p>
-              <p>Price: 200$</p>
-              <p>out of stock</p>
-            </a>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <img src="./img/img2.jpg">
-          </th>
-          <th>
-            <a href="oldcar.html">
-              <h2>Old Car</h2>
-              <p>Lorem Ipsum</p>
-              <p>Price: 100$</p>
-              <p>in stock</p>
-            </a>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <img src="./img/img3.jpg">
-          </th>
-          <th>
-            <a href="">
-              <h2>Another old Car</h2>
-              <p>Lorem Ipsum</p>
-              <p>Price: 100$</p>
-              <p>in stock</p>
-            </a>
-          </th>
-        </tr>
-        <tr>
-          <th>
-            <img src="./img/img4.jpg">
-          </th>
-          <th>
-            <a href="">
-              <h2>Car</h2>
-              <p>Lorem Ipsum</p>
-              <p>Price: 100$</p>
-              <p>in stock</p>
-            </a>
-          </th>
-        </tr>
-      </table>
+                <h2>Old Bus</h2>
+                <p>Lorem Ipsum</p>
+                <p>Price: 200$</p>
+                <p>out of stock</p>
+                <p>Article Number: 1234</p>
+              </a>
+        </section>
+      </section>
+
+      <section class="flexbox">
+          <section class="img">
+              <img class="img" src="./img/img2.jpg">
+          </section>
+    
+          <section class="text">
+              <a href="oldcar.html">
+                  <h2>Old Car</h2>
+                  <p>Lorem Ipsum</p>
+                  <p>Price: 100$</p>
+                  <p>in stock</p>
+                  <p>Article Number: 1334</p>
+              </a>
+          </section>
+      </section>
+
+      <section class="flexbox">
+          <section class="img">
+              <img class="img" src="./img/img3.jpg">
+          </section>
+    
+          <section class="text">
+              <a href="">
+                  <h2>Another old Car</h2>
+                  <p>Lorem Ipsum</p>
+                  <p>Price: 100$</p>
+                  <p>in stock</p>
+                  <p>Article Number: 2234</p>
+              </a>
+          </section>
+      </section>
+       
+      <section class="flexbox">
+          <section class="img">
+              <img class="img" src="./img/img4.jpg">
+          </section>
+    
+          <section class="text">
+              <a href="">
+                  <h2>Car</h2>
+                  <p>Lorem Ipsum</p>
+                  <p>Price: 100$</p>
+                  <p>in stock</p>
+                  <p>Article Number: 1254</p>
+                </a>
+          </section>
+      </section>
     </article>
   </main>
 

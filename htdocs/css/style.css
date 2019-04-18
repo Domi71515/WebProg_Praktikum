@@ -4,6 +4,7 @@
   --main-text-color: #efefef;
   --main-accent-color: #ff2a00;
   --main-accent-color-hover: #f92d23;
+  --main-text-color-grey: #2e2e2e; 
 }
 
 html, body {
@@ -134,12 +135,12 @@ header h1 {
   outline: none;
 }
 
-/* SEARCH*/
+/* SEARCH */
 #searchfilter {
   width: 100%;
   height: 80px;
   color: var(--main-text-color);
-  background-color: var(--main-nav-color);
+  border-bottom: 2px solid var(--main-nav-color);
   line-height: 80px;
   text-align: center;
 }
@@ -167,14 +168,14 @@ header h1 {
 
 /* FILTER*/
 #searchfilter select {
-  border-radius: 50vh 0 0 50vh;
-  padding: 8px 10px;
+  border-radius: 0;
   border: 1px solid #aaaaaa;
+  padding: 7px 10px;
   outline: none;
 }
 
 #searchfilter select:focus {
-  border-radius: 50vh 0 0 50vh;
+  border-radius: 0;
   border-color: var(--main-accent-color);
 }
 
@@ -296,10 +297,37 @@ footer h3 {
   width: 191px;
 }
 
-/* SearchFilter */
+/* Article */
+article>.flexbox  {
+  display: grid;
+  flex-direction: flex-flow;
+  column-count: 2;
+  grid-template-columns: 1fr 1fr;
+  padding: 8px 0;
+  margin: auto;
+  border-bottom: var(--main-nav-color-line) 1px solid;
+}
 
-#searchfilter {
-  background-color: #5d5d5d;
+article>.flexbox>.img {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  margin: auto 0 auto 0;
+}
+
+article>.flexbox>.text {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: left;
+  margin: auto 0 auto 0;
+}
+
+article>.flexbox>.text>a {
+  text-decoration: none;
+  color: var(--main-text-color-grey);
+}
+
+article>.flexbox>.text>a:hover {
+  color: var(--main-accent-color-hover);
 }
 
 /* CLASSES */
@@ -318,7 +346,7 @@ footer h3 {
   cursor: pointer;
 }
 
-main .flexbox {
+main>.flexbox {
   display: grid;
   flex-direction: flex-flow;
   column-count: 2;
