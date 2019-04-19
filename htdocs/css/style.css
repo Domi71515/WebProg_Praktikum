@@ -299,7 +299,7 @@ footer h3 {
 
 /* Article */
 article  {
-  display: grid;
+  display: inline-block;
   flex-direction: flex-flow;
   column-count: 2;
   grid-template-columns: 1fr 1fr;

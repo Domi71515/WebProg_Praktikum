@@ -46,6 +46,10 @@ footer {
 }
 
 /* Article */
+article {
+   display: grid;
+}
+
 article .img img  {
     width: 100%;
   }
