@@ -46,25 +46,8 @@ footer {
 }
 
 /* Article */
-article>.flexbox  {
-    display: grid;
-    flex-direction: flex-flow;
-    column-count: 2;
-    grid-template-columns: 1fr 1fr;
-    padding: 8px 0;
-    margin: auto;
-    border-bottom: var(--main-nav-color-line) 1px solid;
-  }
-  
-  article>.flexbox>.img {
-    grid-column-start: 1;
-    grid-column-end: 1;
-  }
-  
-  article>.flexbox>.text {
-    grid-column-start: 2;
-    grid-column-end: 2;
-    text-align: left;
+article .img img  {
+    width: 100%;
   }
 
 /* CLASSES */

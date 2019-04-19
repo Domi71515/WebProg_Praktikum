@@ -298,40 +298,42 @@ footer h3 {
 }
 
 /* Article */
-article>.flexbox  {
+article  {
   display: grid;
   flex-direction: flex-flow;
   column-count: 2;
   grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
   padding: 8px 0;
   margin: auto;
   border-bottom: var(--main-nav-color-line) 1px solid;
 }
 
-article>.flexbox>.img {
+article>.img {
   grid-column-start: 1;
   grid-column-end: 1;
   margin: auto 0 auto 0;
 }
 
-article>.flexbox>.img img {
+article>.img img {
   width: 300px;
   height: auto;
+  float: right;
 }
 
-article>.flexbox>.text {
+article>.text {
   grid-column-start: 2;
   grid-column-end: 2;
   text-align: left;
   margin: auto 0 auto 0;
 }
 
-article>.flexbox>.text>a {
+article>.text>a {
   text-decoration: none;
   color: var(--main-text-color-grey);
 }
 
-article>.flexbox>.text>a:hover {
+article>.text>a:hover {
   color: var(--main-accent-color-hover);
 }
 
