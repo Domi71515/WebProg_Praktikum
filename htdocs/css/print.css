@@ -1,0 +1,62 @@
+header {
+    display: none;
+}
+
+nav {
+    display: none;
+}
+
+article {
+    page-break-inside: avoid;
+}
+
+footer {
+    page-break-inside: avoid;
+
+}
+
+img {
+    page-break-inside: avoid;
+}
+
+#searchfilter input[type="search"] {
+    font-size: 1rem;
+}
+
+#searchfilter .button {
+    font-size: 1rem;
+}
+
+/* FILTER*/
+#searchfilter select {
+    font-size: 1rem;
+  }
+
+#login {
+    display: none;
+}
+
+.registerForm label {
+    min-width: 160px;
+}
+
+.registerForm input {
+    font-size: 2.125rem;
+}
+
+.registerForm>section {
+    font-size: 2.125rem;
+}
+
+.registerForm input[type='submit'] {
+    width: calc(60% + 20px);
+}
+
+.registerForm input[type='Reset'] {
+    width: 25%;
+    min-width: 180px;
+}
+
+@page {
+    size: portrait;
+}

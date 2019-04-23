@@ -41,10 +41,6 @@ header h1 {
     font-size: 4rem;
 }
 
-footer {
-    height: 500px;
-}
-
 /* Article */
 article {
    display: grid;
@@ -66,17 +62,33 @@ article .img img  {
 }
 
 /* Register */
+.registerForm h1 {
+    font-size: 3rem;
+}
 
 .registerPicture {
     display: none;
 }
 
+.registerForm label {
+    min-width: 260px;
+}
+
 .registerForm input {
-    font-size: 50px;
+    font-size: 3.125rem;
 }
 
 .registerForm>section {
-    font-size: 50px;
+    font-size: 3.125rem;
+}
+
+.registerForm input[type='submit'] {
+    width: calc(60% + 20px);
+}
+
+.registerForm input[type='Reset'] {
+    width: 25%;
+    min-width: 280px;
 }
 
 /* Main */
@@ -116,11 +128,11 @@ footer {
 }
 
 footer h3 {
-    font-size: 25px;
+    font-size: 2rem;
 }
 
 footer section {
-    font-size: 15px;
+    font-size: 1.5rem;
 }
 
 footer .flexbox {
@@ -150,6 +162,14 @@ footer ul {
     padding-left: 0;
 }
 
+/* BUY */
+#buy {
+    height: 120px;
+    line-height: 140px;
+    color: var(--main-text-color);
+    line-height: 80px;
+  }
+
 /* LOGIN */
 
 #login {
@@ -158,11 +178,11 @@ footer ul {
 }
 
 #login input[type="text"] {
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
 #login .button {
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
 /* SEARCH */
@@ -173,14 +193,14 @@ footer ul {
 }
 
 #searchfilter input[type="search"] {
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
 #searchfilter .button {
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
 /* FILTER*/
 #searchfilter select {
-    font-size: 40px;
+    font-size: 2.5rem;
   }
