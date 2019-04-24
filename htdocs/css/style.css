@@ -176,7 +176,6 @@ header h1 {
 }
 
 /* SHOPPINGCART */
-
 #shoppingcartElement {
   border-top: var(--main-nav-color-line) 1px solid;
   border-bottom: var(--main-nav-color-line) 1px solid;
@@ -247,22 +246,6 @@ header h1 {
   border-radius: 0;
   border-radius: 50vh;
   border-color: var(--main-accent-color);
-}
-
-/* BUY ARTICLE*/
-#buyArticle {
-  width: 100%;
-  height: 80px;
-  color: var(--main-text-color);
-  line-height: 80px;
-}
-
-#buyArticle input[type="submit"] {
-  border-radius: 50vh;
-  padding: 8px 10px;
-  border: 1px solid #aaaaaa;
-  outline: none;
-  font-size: 1.5rem;
 }
 
 /* FOOTER */
