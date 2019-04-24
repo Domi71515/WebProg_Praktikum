@@ -107,23 +107,6 @@ header h1 {
   font-size: 3rem;
 }
 
-/* BUY */
-#buy {
-  width: 100%;
-  height: 80px;
-  color: var(--main-text-color);
-  line-height: 80px;
-}
-
-#buy input[type="submit"] {
-  border-radius: 50vh;
-  padding: 8px 10px;
-  border: 1px solid #aaaaaa;
-  outline: none;
-  font-size: 1.5rem;
-}
-
-
 
 /* FILTER*/
 #searchfilter select {
@@ -209,6 +192,97 @@ header h1 {
 #searchfilter select:focus {
   border-radius: 0;
   border-color: var(--main-accent-color);
+}
+
+/* SHOPPINGCART */
+
+#shoppingcartElement {
+  border-top: var(--main-nav-color-line) 1px solid;
+  border-bottom: var(--main-nav-color-line) 1px solid;
+}
+
+#shoppingcartElement>article  {
+  display: inline-block;
+  flex-direction: flex-flow;
+  column-count: 3;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 30px;
+  padding: 8px 0;
+  margin: auto;
+}
+
+#shoppingcartElement>article>.img {
+  grid-column-start: 1;
+  grid-column-end: 1;
+  margin: auto 0 auto 0;
+}
+
+#shoppingcartElement>article>.text {
+  grid-column-start: 2;
+  grid-column-end: 2;
+  text-align: left;
+  margin: auto 0 auto 0;
+}
+
+#shoppingcartElement>article>.quantity {
+  grid-column-start: 3;
+  grid-column-end: 3;
+  text-align: left;
+  margin: auto 0 auto 0;
+  display: block;
+}
+
+#subtotal {
+  color: var(--main-accent-color);
+}
+
+/* BUY */
+#checkout {
+  width: 100%;
+  height: 80px;
+  color: var(--main-text-color);
+  line-height: 80px;
+}
+
+#checkout input[type="submit"] {
+  border-radius: 50vh;
+  padding: 8px 10px;
+  border: 1px solid #aaaaaa;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+/* SELECT QUANTITY*/
+#quantity select {
+  border-radius: 0;
+  border-radius: 50vh;
+  border: 1px solid #eeeeee;
+  background: #eeeeee;
+  padding: 7px 10px;
+  outline: none;
+  text-align: center;
+}
+
+#quantity select:focus {
+  border-radius: 0;
+  border-radius: 50vh;
+  border-color: var(--main-accent-color);
+}
+
+/* BUY ARTICLE*/
+#buyArticle {
+  width: 100%;
+  height: 80px;
+  color: var(--main-text-color);
+  line-height: 80px;
+}
+
+#buyArticle input[type="submit"] {
+  border-radius: 50vh;
+  padding: 8px 10px;
+  border: 1px solid #aaaaaa;
+  outline: none;
+  font-size: 1.5rem;
 }
 
 /* FOOTER */
