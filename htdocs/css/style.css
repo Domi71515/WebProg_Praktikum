@@ -24,10 +24,6 @@ main ul {
   padding: 0;
 }
 
-#articleMain {
-  text-align: center;
-}
-
 /* Navigation */
 
 nav {
@@ -107,21 +103,6 @@ header h1 {
   font-size: 3rem;
 }
 
-
-/* FILTER*/
-#searchfilter select {
-  border-radius: 0;
-  border: 1px solid #aaaaaa;
-  padding: 7px 10px;
-  outline: none;
-}
-
-#searchfilter select:focus {
-  border-radius: 0;
-  border-color: var(--main-accent-color);
-}
-
-
 /* LOGIN */
 
 #login {
@@ -150,7 +131,7 @@ header h1 {
   outline: none;
 }
 
-/* SEARCH */
+/* FILTER */
 #searchfilter {
   width: 100%;
   height: 80px;
@@ -158,6 +139,19 @@ header h1 {
   border-bottom: 2px solid var(--main-nav-color);
   line-height: 80px;
   text-align: center;
+}
+
+#searchfilter select {
+  border-radius: 0;
+  border: 1px solid #aaaaaa;
+  padding: 7px 10px;
+  outline: none;
+  background: white;
+}
+
+#searchfilter select:focus {
+  border-radius: 0;
+  border-color: var(--main-accent-color);
 }
 
 #searchfilter form {
@@ -181,19 +175,6 @@ header h1 {
   outline: none;
 }
 
-/* FILTER*/
-#searchfilter select {
-  border-radius: 0;
-  border: 1px solid #aaaaaa;
-  padding: 7px 10px;
-  outline: none;
-}
-
-#searchfilter select:focus {
-  border-radius: 0;
-  border-color: var(--main-accent-color);
-}
-
 /* SHOPPINGCART */
 
 #shoppingcartElement {
@@ -202,7 +183,6 @@ header h1 {
 }
 
 #shoppingcartElement>article  {
-  display: inline-block;
   flex-direction: flex-flow;
   column-count: 3;
   grid-template-columns: 1fr 1fr 1fr;
@@ -396,11 +376,13 @@ footer h3 {
   width: 120px;
   padding: 10px;
   border-radius: 50vh 0 0 50vh;
+  background: white;
 }
 
 .registerForm input[Type="Submit"] {
   padding: 10px;
   width: 191px;
+  background: white;
 }
 
 /* Article */
