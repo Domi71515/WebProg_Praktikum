@@ -404,8 +404,17 @@ article>.text>a {
   color: var(--main-text-color-grey);
 }
 
+article>.text p:last-child {
+  float: right;
+  color: grey;
+}
+
 article>.text>a:hover {
   color: var(--main-accent-color-hover);
+}
+
+#articleMain h2 {
+  font-size: 1em;
 }
 
 #articleMain {

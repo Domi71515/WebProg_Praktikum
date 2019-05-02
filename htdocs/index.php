@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<?php
+  include("mysql.php");
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -50,19 +54,42 @@
 
   <section id="searchfilter">
     <!-- Form for Filters, if selected, it will only show Articels in its section -->
-    <form action="index.html" method="get">
+    <form method="get">
       <input type="search" name="search" placeholder="Search...">
       <select name="filter">
-        <option value="car">Cars</option>
-        <option value="train">Trains</option>
-        <option value="ship">Ships</option>
-        <option value="airplane">Airplanes</option>
+        <option value="" selected disabled>Please Select...</option>
+        <option value="-1">All</option>
+<?php
+  $sql = "SELECT * FROM Warengruppen";
+
+  foreach ($pdo -> query($sql) as $row) {
+    echo '<option value="' . $row['GruppenNr'] . '">' . $row['GruppenName'] . '</option>';
+  }
+?>
       </select>
       <input type="submit" value="search" class="button">
     </form>
   </section>
   <main id="articleMain">
     <!-- Placeholder for Articles      -->
+  
+<?php
+  if (isset($_GET['search'], $_GET['filter'])) {
+    $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE GruppenNr = ? AND ArtikelName LIKE ?");
+    $statement -> execute(array($_GET['filter'], '%' . $_GET['search'] . '%'));
+  }
+  if (isset($_GET['search']) && (!isset($_GET['filter']) || $_GET['filter'] == "-1")) {
+    $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE ArtikelName LIKE ?");
+    $statement -> execute(array('%' . $_GET['search'] . '%'));
+  }
+  else {
+    $statement = $pdo -> prepare("SELECT * FROM Artikel");
+    $statement -> execute();
+  }
+
+  if($statement->rowCount() > 0){
+    while($row = $statement->fetch()) {
+?>
     <article>
       <section class="img">
         <img class="img" src="./img/img1.jpg">
@@ -70,126 +97,19 @@
 
       <section class="text">
         <a href="oldbus.html">
-          <h2>Old Bus</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 200$</p>
-          <p>out of stock</p>
-          <p>Article Number: 1234</p>
+          <h2><?php echo $row['ArtikelName'] ?></h2>
+          <p>Price: <?php echo $row['Listenpreis'] ?>$</p>
+          <p>Size: <?php echo $row['Massstab'] ?></p>
+          <p>Art-Num: <?php echo $row['ArtikelNr'] ?></p>
         </a>
       </section>
     </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img2.jpg">
-      </section>
-
-      <section class="text">
-        <a href="oldcar.html">
-          <h2>Old Car</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 100$</p>
-          <p>in stock</p>
-          <p>Article Number: 1334</p>
-        </a>
-      </section>
-    </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img3.jpg">
-      </section>
-
-      <section class="text">
-        <a href="">
-          <h2>Another old Car</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 100$</p>
-          <p>in stock</p>
-          <p>Article Number: 2234</p>
-        </a>
-      </section>
-    </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img4.jpg">
-      </section>
-
-      <section class="text">
-        <a href="">
-          <h2>Car</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 100$</p>
-          <p>in stock</p>
-          <p>Article Number: 1254</p>
-        </a>
-      </section>
-    </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img5.jpg">
-      </section>
-
-      <section class="text">
-        <a href="">
-          <h2>Airplane</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 300$</p>
-          <p>in stock</p>
-          <p>Article Number: 2254</p>
-        </a>
-      </section>
-    </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img8.jpg">
-      </section>
-
-      <section class="text">
-        <a href="">
-          <h2>Old Airplane</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 4400$</p>
-          <p>in stock</p>
-          <p>Article Number: 2244</p>
-        </a>
-      </section>
-    </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img6.jpg">
-      </section>
-
-      <section class="text">
-        <a href="">
-          <h2>Train</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 50$</p>
-          <p>in stock</p>
-          <p>Article Number: 5260</p>
-        </a>
-      </section>
-    </article>
-
-    <article>
-      <section class="img">
-        <img class="img" src="./img/img7.jpg">
-      </section>
-
-      <section class="text">
-        <a href="">
-          <h2>Boat</h2>
-          <p>Lorem Ipsum</p>
-          <p>Price: 250$</p>
-          <p>in stock</p>
-          <p>Article Number: 6715</p>
-        </a>
-      </section>
-    </article>
+<?php
+    }
+  }else {
+    echo "<h2>Nothing found!</h2>";
+  }
+?>
   </main>
 
   <!-- Footer -->
