@@ -24,8 +24,14 @@
     </section>
     <ul>
       <li><a href="index.html" alt="Home">Home</a></li>
+<?php
+  if(!isset($_SESSION["customerId"])){
+?>
       <li>|</li>
-      <li><a href="register.html" alt="Register">Register</a></li>
+      <li><a href="register.php" alt="Register">Register</a></li>
+<?php
+  }
+?>
       <li>|</li>
       <li><a href="shoppingcart.html" alt="Shoppingcart">Shoppingcart</a></li>
       <li>|</li>

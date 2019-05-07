@@ -23,6 +23,20 @@ nav #burgerMenu img {
     height: 100px;
 }
 
+#mobileNavigation {
+    display: none;
+    top: 180px;
+    width: 100%;
+    position: absolute;
+    height: calc(100% - 180px);
+    background-color: #000;
+    font-size: 7rem;
+}
+#mobileNavigation a {
+    color: #fff;
+    text-decoration: none;
+}
+
 /* Header */
 
 header {

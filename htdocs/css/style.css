@@ -78,6 +78,10 @@ nav #burgerMenu {
   display: none;
 }
 
+#mobileNavigation {
+  display: none;
+}
+
 /* Header */
 
 header {
@@ -129,6 +133,28 @@ header h1 {
 #login .button {
   border-radius: 0 50vh 50vh 0;
   outline: none;
+}
+
+#login h2 
+{
+  margin: 0;
+}
+
+#login .errorMsgLogin {
+  position: relative;
+  top: -37px;
+  padding: 0px 20px;
+  display: inline-block;
+  animation:signup-response 0.5s 1;
+  animation-delay:2s;
+  animation-fill-mode: forwards;
+  background-color: #777777ee;
+}
+
+@keyframes signup-response {
+  from {opacity :1;}
+  to {opacity :0;
+      height: 0px;}
 }
 
 /* FILTER */
@@ -397,6 +423,7 @@ article>.text {
   grid-column-end: 2;
   text-align: left;
   margin: auto 0 auto 0;
+  max-width: 300px;
 }
 
 article>.text>a {

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php
+  include("includes/mysql.php");
+
+  session_start();
+?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
       <meta charset="UTF-8">
@@ -14,20 +19,34 @@
       
     <!-- Navigation -->
     <nav>
-			<a href="index.html">
+			<a href="index.php">
 				<img src="img/Toymodel_Logo.svg" id="brand">
       </a>
       <section id="burgerMenu">
         <img src="img/menu.png">
       </section>
       <ul>
-				<li><a href="index.html" alt="Home" >Home</a></li>
+				<li><a href="index.php" alt="Home" >Home</a></li>
+<?php
+  if(!isset($_SESSION["customerId"])){
+?>
+      <li>|</li>
+      <li><a href="register.php" alt="Register">Register</a></li>
+<?php
+  }
+?>
 				<li>|</li>
-				<li><a href="register.html" alt="Register">Register</a></li>
-				<li>|</li>
-				<li><a href="shoppingcart.html" alt="Shoppingcart">Shoppingcart</a></li>
+				<li><a href="shoppingcart.php" alt="Shoppingcart">Shoppingcart</a></li>
 				<li>|</li>
         <li><a href="#" alt="Impressum" class="active">Impressum</a></li>
+<?php
+  if(isset($_SESSION["customerId"])){
+?>
+      <li>|</li>
+      <li><a href="index.php?login=1" alt="Logout">Logout</a></li>
+<?php
+  }
+?>
       </ul>
     </nav>
 
@@ -110,37 +129,8 @@
       </section>
     </main>
 
-    <footer>
-        <section class="flexbox">
-          <section id="about">
-            <h3>About</h3>
-            <ul>
-              <li>Address:</li>
-              <li>Toymodels GmbH</li>
-              <li>Joachimstaler Str. 52</li>
-              <li>97234 Reichenberg</li>
-            </ul>
-            <ul>
-              <li>Telefon:</li>
-              <li>+49 6771 62 55 99</li>
-            </ul>
-          </section>
-          <section id="links">
-            <h3>Links</h3>
-            <ul>
-                <li><a href="index.html" alt="Home">Home</a></li>
-                <li><a href="register.html" alt="Register">Register</a></li>
-                <li><a href="shoppingcart.html" alt="Shoppingcart">Shoppingcart</a></li>
-                <li><a href="impressum.html" alt="Impressum">Impressum</a></li>
-            </ul>
-          </section>
-          <section id="impressum">
-            <h3>Impressum</h3>
-            <ul>
-              <li><a href="impressum.html" alt="Impressum">Impressum</a></li>
-            </ul>
-          </section>
-        </section>
-      </footer>
+<?php
+  include("includes/footer.html");
+?>
   </body>
 </html>
