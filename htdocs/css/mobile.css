@@ -24,14 +24,34 @@ nav #burgerMenu img {
 }
 
 #mobileNavigation {
-    display: none;
-    top: 180px;
+    display: unset;
+    top: 179px;
+    right: 100%;
     width: 100%;
     position: absolute;
     height: calc(100% - 180px);
-    background-color: #000;
+    background-color: rgba(26, 26, 26, 0.99);
     font-size: 7rem;
 }
+
+.moveOut {
+    animation: moveOut 1s;
+}
+
+.moveIn {
+    animation: moveIn 1s;
+    right: 0% !important;
+}
+
+@keyframes moveIn   {
+    from { right: 100%; }
+    to {right: 0%;}
+}
+@keyframes moveOut {
+    from {right: 0%; }
+    to {right: 100%; }
+}
+
 #mobileNavigation a {
     color: #fff;
     text-decoration: none;
@@ -64,6 +84,10 @@ article .img img  {
     width: 100%;
   }
 
+article>.text { 
+    max-width: unset;
+}
+
 /* CLASSES */
 
 .grid-container {
@@ -92,7 +116,7 @@ article .img img  {
     font-size: 3.125rem;
 }
 
-.registerForm>section {
+.registerForm {
     font-size: 3.125rem;
 }
 

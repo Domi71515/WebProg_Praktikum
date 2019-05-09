@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/mobile.css" type="text/css" media="(max-width: 1024px)" />
   <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
   <link rel="shortcut icon" href="favicon.ico">
+  <script src="js/script.js"></script>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
       <img src="img/Toymodel_Logo.svg" id="brand">
     </a>
     <section id="burgerMenu">
-      <img src="img/menu.png">
+      <img src="img/menu.png" onClick="toggleNav()">
     </section>
     <ul>
       <li><a href="#" alt="Home" class="active">Home</a></li>
@@ -62,11 +63,17 @@
   
   <section id="mobileNavigation">
   <ul>
-      <li><a href="#" alt="Home" class="active">Home</a></li>
+      <li><a href="index.php" alt="Home" class="active">Home</a></li>
       <li><a href="register.php" alt="Register">Register</a></li>
       <li><a href="shoppingcart.php" alt="Shoppingcart">Shoppingcart</a></li>
       <li><a href="impressum.php" alt="Impressum">Impressum</a></li>
+<?php
+  if(isset($_SESSION["customerId"])){
+?>
       <li><a href="index.php?login=1" alt="Logout">Logout</a></li>
+<?php
+  }
+?>
     </ul>  
   </section>
 
@@ -101,9 +108,9 @@
 
     if($statement->rowCount() != 0) {
       $row = $statement->fetch();
-      $_SESSION["username"] = trim($row['Vorname']) . " ". trim($row["Nachname"]);
+      $_SESSION["username"] = trim($row['Vorname']) . " " . trim($row["Nachname"]);
       $_SESSION["customerId"] = $row["KundenNr"];
-      
+
       header('Location: /toymodels#login');
     }
     else
