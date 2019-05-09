@@ -57,19 +57,25 @@
           <img src="img/locomotive.png" />
         </section>
         <section class="registerForm">
-          <section>
+<?php
+  if(!isset($_GET["register"]))
+  {
+?>
               <h1>Register</h1>
-              <form method="post" action="?register=1">
+              <form method="post" action="?register=0">
                 <label for="firstname">Firstname:</label>
-                <input type="text" name="firstname" placeholder="Firstname"> <br>
+                <input type="text" name="firstname" placeholder="Firstname" required> <br>
 
                 <label for="surename">Surename:</label>
-                <input type="text" name="surename" placeholder="Surename"> <br>
+                <input type="text" name="surename" placeholder="Surename" required> <br>
+
+                <label for="telefon">Telefon:</label>
+                <input type="text" name="telefon" placeholder="Telefon" required> <br>
 
                 <label for="company">Company:</label>
                 <input type="text" name="company" placeholder="Company" required> <br>
 
-                <label for="adress">Address:</label>
+                <label for="address">Address:</label>
                 <input type="text" name="address" placeholder="Address" required> <br>
 
                 <label for="location">Location:</label>
@@ -84,7 +90,43 @@
                 <input type="reset" value="Reset"> 
                 <input type="submit" value="Register">
               </form>
-          </section>        
+<?php
+  }else
+  {
+    if($_GET["register"] == 0)
+    {
+      $firstname = trim($_POST["firstname"]);
+      $surename = trim($_POST["surename"]);
+      $telefon = trim($_POST["telefon"]);
+      $company = trim($_POST["company"]);
+      $address = trim($_POST["address"]);
+      $location = trim($_POST["location"]);
+      $country = trim($_POST["country"]);
+      $postcode = trim($_POST["postcode"]);
+
+      if($firstname != "" && $surename != "" && $telefon != "" && $company != "" && $address != "" && $location != "" && $country != "" && $postcode != "")
+      {
+        //GET RANDOM VORGESETZEN
+        $statement = $pdo->prepare("SELECT PersonalNr FROM Mitarbeiter ORDER BY RAND() LIMIT 1");
+        $statement -> execute();
+
+        $PersonalNr = $statement->fetch()["PersonalNr"];
+
+        $statement = $pdo->prepare("INSERT INTO Kunden (Firma, Nachname, Vorname, Telefon, Strasse, Ort, PLZ, Land, Kundenbetreuer) VALUES (?,?,?,?,?,?,?,?,?)");
+        $statement -> execute(array($company, $surename, $firstname, $telefon, $address, $location, $postcode, $country, $PersonalNr));
+
+        $newID = $pdo->lastInsertId();
+        $_SESSION["customerId"] = $newID;
+        $_SESSION["username"] = $firstname . " " . $surename;
+        echo "<h1>Registration Successfull! Your ID: " . $newID . ". <a href='index.php'>Main</a></h1>";
+      }
+      else 
+      {
+        echo "<h1>Error, please try again! <a href='register.php'>HERE</a></h1>";
+      }
+    }
+  }
+?>
         </section>
       </section>
     </main>
