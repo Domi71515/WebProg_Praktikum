@@ -464,12 +464,6 @@ article>.text>a:hover {
   cursor: pointer;
 }
 
-.description {
-  border-top: var(--main-nav-color-line) 1px solid;
-  text-align: justify;
-  display: inline-block;
-}
-
 main>.flexbox {
   display: grid;
   flex-direction: flex-flow;
@@ -492,6 +486,35 @@ main #headquarters {
   column-count: 2;
   column-gap: 20px;
   text-align: justify;
+}
+
+/*Detail*/
+#detail {
+  display: none;
+  text-align: left;
+}
+
+.description {
+  border-bottom: var(--main-nav-color-line) 1px solid;
+  text-align: left;
+  display: none;
+  max-width: 630px;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.textDescription{
+  max-width: 620px;
+  align-content: center;
+  margin: 0 auto;
+}
+
+.hideDetail {
+  display: none;
+}
+
+.showDetail {
+  display: inherit;
 }
 
 /* Custom Scrollbar */

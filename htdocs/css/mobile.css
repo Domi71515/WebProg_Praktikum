@@ -88,6 +88,14 @@ article>.text {
     max-width: unset;
 }
 
+.description {
+    max-width: 100%;
+}
+
+.textDescription {
+    max-width: 100%;
+}
+
 /* CLASSES */
 
 .grid-container {

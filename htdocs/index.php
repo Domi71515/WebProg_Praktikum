@@ -184,7 +184,7 @@
   if($statement->rowCount() > 0){
     while($row = $statement->fetch()) {
 ?>
-    <article>
+    <article onClick="showDetail(<?php echo $row['ArtikelNr'] ?>)">
       <section class="img">
         <img class="img" src="./img/img1.jpg">
       </section>
@@ -194,6 +194,30 @@
           <p>Price: <?php echo $row['Listenpreis'] ?>$</p>
           <p>Size: <?php echo $row['Massstab'] ?></p>
           <p>Art-Num: <?php echo $row['ArtikelNr'] ?></p>
+      </section>
+
+      <section id="<?php echo $row['ArtikelNr'] ?>" class="description">
+        <section class="textDescription">
+            <h2>Description</h2>
+            <p><?php echo $row['Beschreibung'] ?></p>
+        </section>
+        <section id="quantity">
+          <h2>Quantity</h2>
+
+          <select autofocus name="quantity">
+            <?php echo $row['Bestandmenge']?>
+            <option value="0">0</option>
+            <option selected="selected" value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </section>
+        <section id="buy">
+          <form method="post" action="shoppingcart_oldcar.html">
+              <input type="submit" class="button" value="Add to shoppingcart">
+          </form>
+        </section>
       </section>
     </article>
 <?php
