@@ -1,7 +1,6 @@
 ﻿<?php
   include("includes/mysql.php");
-
-  session_start();
+  include("includes/shoppingcart.php");
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +97,7 @@
   }
 
   if(isset($_GET["login"]) && $_GET["login"] == 1 && isset($_SESSION["username"])) {
-    session_destroy();
+    unset($_SESSION["customerId"], $_SESSION["username"]);
     header('Location: /toymodels');
   }
 
@@ -184,41 +183,34 @@
   if($statement->rowCount() > 0){
     while($row = $statement->fetch()) {
 ?>
-    <article onClick="showDetail(<?php echo $row['ArtikelNr'] ?>)">
-      <section class="img">
-        <img class="img" src="./img/img1.jpg">
-      </section>
+    <article>
 
-      <section class="text">
-          <h2><?php echo $row['ArtikelName'] ?></h2>
-          <p>Price: <?php echo $row['Listenpreis'] ?>$</p>
-          <p>Size: <?php echo $row['Massstab'] ?></p>
-          <p>Art-Num: <?php echo $row['ArtikelNr'] ?></p>
-      </section>
+    <section class="article-grid">
+        <section class="img">
+          <img class="img" src="./img/img1.jpg">
+        </section>
+        <section class="text" onClick="showDetail(<?php echo $row['ArtikelNr'] ?>_description)">
+            <h2><?php echo $row['ArtikelName'] ?></h2>
+            <p>Price: <?php echo $row['Listenpreis'] ?>$</p>
+            <p>Size: <?php echo $row['Massstab'] ?></p>
+            <p>Art-Num: <?php echo $row['ArtikelNr'] ?></p>
+        </section>
+    </section>
 
-      <section id="<?php echo $row['ArtikelNr'] ?>" class="description">
+      <section id="<?php echo $row['ArtikelNr'] ?>_description" class="description" >
         <section class="textDescription">
             <h2>Description</h2>
             <p><?php echo $row['Beschreibung'] ?></p>
         </section>
-        <section id="quantity">
-          <h2>Quantity</h2>
-
-          <select autofocus name="quantity">
-            <?php echo $row['Bestandmenge']?>
-            <option value="0">0</option>
-            <option selected="selected" value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-          </select>
-        </section>
         <section id="buy">
-          <form method="post" action="shoppingcart_oldcar.html">
-              <input type="submit" class="button" value="Add to shoppingcart">
-          </form>
+          <h2>Quantity: <?php echo $row['Bestandsmenge']; ?></h2>
+        
+          <input type="number" id="<?php echo $row['ArtikelNr'] ?>" value="1"/>
+          <input type="submit" class="button" value="Add to shoppingcart" onClick="buy('<?php echo $row['ArtikelNr'] ?>')">
+          
         </section>
       </section>
+    
     </article>
 <?php
     }

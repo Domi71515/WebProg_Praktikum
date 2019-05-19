@@ -1,7 +1,6 @@
 <?php
   include("includes/mysql.php");
-
-  session_start();
+  include("includes/shoppingcart.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,18 +67,80 @@
     </ul>  
   </section>
   <main>
+<?php
+  if(!isset($_GET["checkout"])){
+
+?>
     <h2>Shopping Cart</h2>
     <section id="shoppingcartElement">
-      <p>Your Shopping Cart is empty.</p>
+<?php
+  if(isset($_SESSION["shoppingcart"]) && sizeof($_SESSION["shoppingcart"]) > 0) 
+  {
+    //unset($_SESSION["shoppingcart"]);
+    foreach($_SESSION["shoppingcart"] as $article => $value) {
+      $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE ArtikelNr = ?");
+      $statement -> execute(array($article));
+
+      $row = $statement->fetch();
+?>
+  <article>
+    <section class="img">
+      <img class="img" src="./img/img1.jpg">
     </section>
 
+    <section class="text">
+      <h3><?php echo $row["ArtikelName"]; ?></h3>
+    </section>
+    <section class="quantity">
+      Amount: <input type="number" id="<?php echo $article; ?>" value="<?php echo $value; ?>" /><br><br>
+      <button class="button" onClick="change('<?php echo $article; ?>')">Change</button>
+    </section>
+
+  </article>
+<?php
+    }
+?>
+    </section>
+<?php
+  if (isset($_SESSION["customerId"])){
+?>
     <section id="checkout">
         <!--    Form for submitting Buy action -->
-        <form method="post" action="buy.html">
+        
+        <form method="post" action="?checkout=-1">
+          <textarea name="comment" placeholder="Comment"></textarea><br>
           <input type="submit" class="button" value="Proceed to checkout">
        </form>
       </section>
+<?php
+    }
+  }
+  else
+  {
+?>
+    <section id="shoppingcartElement">
+      <p>Your Shopping Cart is empty.</p>
+    </section>
+    <?php
+  }
+  //unset($_SESSION["shoppingcart"]);
+  }
+  else{
+    if($_GET["checkout"] == -1)
+    {
+      Buy($_POST["comment"]);
+    }else {
+      $statement = $pdo -> prepare("SELECT * FROM Auftraege WHERE AuftragsNr = ?");
+      $statement -> execute(array($_GET["checkout"]));
 
+      $row = $statement->fetch();
+?>
+  <h3>Ihre Auftrags Nummer: <?php echo $row["AuftragsNr"]; ?></h3>
+  <p>Geplanter Liefertermin: <?php echo $row["Plantermin"]; ?><p>
+<?php
+    }
+  }
+    ?>
   </main>
 
   <!-- Footer -->
