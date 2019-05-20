@@ -79,31 +79,31 @@
               <h1>Register</h1>
               <form method="post" action="?register=0">
                 <label for="firstname">Firstname:</label>
-                <input type="text" name="firstname" placeholder="Firstname" required> <br>
+                <input onfocusout="checkNotEmpty(this)" onkeypress="updateButton()" type="text" name="firstname" placeholder="Firstname"> <br>
 
                 <label for="surename">Surename:</label>
-                <input type="text" name="surename" placeholder="Surename" required> <br>
+                <input onfocusout="checkNotEmpty(this)" onkeypress="updateButton()" type="text" name="surename" placeholder="Surename"> <br>
 
                 <label for="telefon">Telefon:</label>
-                <input type="text" name="telefon" placeholder="Telefon" required> <br>
+                <input onfocusout="checkIsNumber(this)" onkeypress="updateButton()" type="text" name="telefon" placeholder="Telefon"> <br>
 
                 <label for="company">Company:</label>
-                <input type="text" name="company" placeholder="Company" required> <br>
+                <input onfocusout="checkNotEmpty(this)" onkeypress="updateButton()" type="text" name="company" placeholder="Company"> <br>
 
                 <label for="address">Address:</label>
-                <input type="text" name="address" placeholder="Address" required> <br>
+                <input onfocusout="checkNotEmpty(this)" onkeypress="updateButton()" type="text" name="address" placeholder="Address"> <br>
 
                 <label for="location">Location:</label>
-                <input type="text" name="location" placeholder="Location" required> <br>
+                <input onfocusout="checkNotEmpty(this)" onkeypress="updateButton()" type="text" name="location" placeholder="Location"> <br>
 
                 <label for="country">Country:</label>
-                <input type="text" name="country" placeholder="Country" required> <br>
+                <input onfocusout="checkNotEmpty(this)" onkeypress="updateButton()" type="text" name="country" placeholder="Country"> <br>
 
                 <label for="postcode">Postcode:</label>
-                <input maxlength="5" name="postcode" placeholder="Postcode" required> <br>
+                <input onfocusout="checkIsNumber(this)" onkeypress="updateButton()" maxlength="5" name="postcode" placeholder="Postcode"> <br>
                 <br>
                 <input type="reset" value="Reset"> 
-                <input type="submit" value="Register">
+                <input type="submit" value="Register" name="submitRegister" disabled>
               </form>
 <?php
   }else

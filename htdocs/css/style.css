@@ -550,6 +550,14 @@ main #headquarters {
   outline: none;
 }
 
+.inputError {
+  background-color:#ED0101;
+}
+
+.inputError::placeholder {
+  color: white;
+}
+
 /* Custom Scrollbar */
 
 ::-webkit-scrollbar {
