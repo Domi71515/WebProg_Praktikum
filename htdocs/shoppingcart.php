@@ -76,14 +76,18 @@
 <?php
   if(isset($_SESSION["shoppingcart"]) && sizeof($_SESSION["shoppingcart"]) > 0) 
   {
+    $gesamtPreis = 0;
+
     //unset($_SESSION["shoppingcart"]);
     foreach($_SESSION["shoppingcart"] as $article => $value) {
       $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE ArtikelNr = ?");
       $statement -> execute(array($article));
 
       $row = $statement->fetch();
+
+      $gesamtPreis += $row["Listenpreis"] * $value;
 ?>
-  <article>
+  <article id="<?php echo $article; ?>">
     <section class="img">
       <img class="img" src="./img/img1.jpg">
     </section>
@@ -92,14 +96,18 @@
       <h3><?php echo $row["ArtikelName"]; ?></h3>
     </section>
     <section class="quantity">
-      Amount: <input type="number" id="<?php echo $article; ?>" value="<?php echo $value; ?>" /><br><br>
+      Amount: <input type="number" min="0" name="<?php echo $article; ?>" value="<?php echo $value; ?>" /><br><br>
       <button class="button" onClick="change('<?php echo $article; ?>')">Change</button>
     </section>
-
+    <section class="price">
+      <p style="display: none" class="singlePrice"><?php echo $row["Listenpreis"]; ?></p>
+      Preis: <p class="sumPrice"><?php echo $row["Listenpreis"] * $value; ?></p>€
+    </section>
   </article>
 <?php
     }
 ?>
+  <p id="endPrice" style="float: right;">Gesamtpreis: <?php echo $gesamtPreis; ?></p>
     </section>
 <?php
   if (isset($_SESSION["customerId"])){

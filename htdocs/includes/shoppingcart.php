@@ -10,13 +10,30 @@
   }
 
   function change(artNr){
-    var amount = document.getElementById(artNr).value;
+    var amount = document.getElementsByName(artNr)[0].value;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/toymodels/includes/shoppingcart.php?buy=2');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
     }
     xhr.send(encodeURI('artNr=' + artNr + '&amount=' + amount));
+
+    let listenpreis = document.getElementById(artNr).getElementsByClassName("singlePrice")[0].innerText;
+    document.getElementById(artNr).getElementsByClassName("sumPrice")[0].innerText = listenpreis * amount;
+
+    changeSum();
+  }
+
+  function changeSum() 
+  {
+    var articles = document.getElementsByTagName("article");
+    var sum = 0;
+    for(var i = 0; i < articles.length; i++) {
+      var price = parseFloat(articles[i].getElementsByClassName("sumPrice")[0].innerHTML);
+      sum += price;
+    }
+
+    document.getElementById("endPrice").innerHTML = sum;
   }
 </script>
 <?php

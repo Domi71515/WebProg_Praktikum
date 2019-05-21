@@ -146,36 +146,32 @@
     <!-- Placeholder for Articles      -->
   
 <?php
-  // if (isset($_GET['search']) && (!isset($_GET['filter']))) {
-  //   $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE ArtikelName LIKE ?");
-  //   $statement -> execute(array('%' . $_GET['search'] . '%'));
-  // }
   if (isset($_GET['search'], $_GET['filter'])) {
     if($_GET["search"] == "" && $_GET["filter"] != "-1") 
     {
-      $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE GruppenNr = ?");
+      $statement = $pdo -> prepare("SELECT * FROM Artikel LEFT JOIN Warengruppen on Artikel.GruppenNr=Warengruppen.GruppenNr WHERE Artikel.GruppenNr = ?");
       $statement -> execute(array($_GET['filter']));
     }
     
     if($_GET["search"] != "" && $_GET["filter"] != "-1") 
     {
-      $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE GruppenNr = ? AND ArtikelName LIKE ?");
+      $statement = $pdo -> prepare("SELECT * FROM Artikel LEFT JOIN Warengruppen on Artikel.GruppenNr=Warengruppen.GruppenNr WHERE Artikel.GruppenNr = ? AND Artikel.ArtikelName LIKE ?");
       $statement -> execute(array($_GET["filter"], '%' . $_GET['search'] . '%'));
     }
     if($_GET["search"] == "" && $_GET["filter"] == "-1")
     {
-      $statement = $pdo -> prepare("SELECT * FROM Artikel");
+      $statement = $pdo -> prepare("SELECT * FROM Artikel LEFT JOIN Warengruppen on Artikel.GruppenNr=Warengruppen.GruppenNr");
       $statement -> execute();
     } 
   }
   else {
     if(isset($_GET["search"])){
-      $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE ArtikelName LIKE ?");
+      $statement = $pdo -> prepare("SELECT * FROM Artikel LEFT JOIN Warengruppen on Artikel.GruppenNr=Warengruppen.GruppenNr WHERE Artikel.ArtikelName LIKE ?");
       $statement -> execute(array('%' . $_GET['search'] . '%'));
     }
     else 
     {
-      $statement = $pdo -> prepare("SELECT * FROM Artikel");
+      $statement = $pdo -> prepare("SELECT * FROM Artikel LEFT JOIN Warengruppen on Artikel.GruppenNr=Warengruppen.GruppenNr");
       $statement -> execute();
     }
   }
@@ -193,7 +189,7 @@
             <h2><?php echo $row['ArtikelName'] ?></h2>
             <p>Price: <?php echo $row['Listenpreis'] ?>$</p>
             <p>Size: <?php echo $row['Massstab'] ?></p>
-            <p>Art-Num: <?php echo $row['ArtikelNr'] ?></p>
+            <p>Art-Num: <?php echo $row['ArtikelNr'] ?> - <?php echo $row["GruppenName"] ?></p>
         </section>
     </section>
 
