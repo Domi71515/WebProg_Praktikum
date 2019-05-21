@@ -10,9 +10,13 @@ article {
     page-break-inside: avoid;
 }
 
+/* footer */
 footer {
     page-break-inside: avoid;
+}
 
+#links, #impressum {
+    display: none;
 }
 
 img {
