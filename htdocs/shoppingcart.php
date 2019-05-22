@@ -1,6 +1,7 @@
 <?php
   include("includes/mysql.php");
   include("includes/shoppingcart.php");
+  include("includes/sessionHandler.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

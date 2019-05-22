@@ -2,6 +2,7 @@
   include("includes/mysql.php");
 
   session_start();
+  include("includes/sessionHandler.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

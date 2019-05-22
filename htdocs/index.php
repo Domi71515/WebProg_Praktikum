@@ -1,6 +1,7 @@
 ﻿<?php
   include("includes/mysql.php");
   include("includes/shoppingcart.php");
+  include("includes/sessionHandler.php");
 ?>
 
 <!DOCTYPE html>
@@ -80,7 +81,7 @@
   <!-- Form for Login, redirects to login.html    -->
   <section id="login">
 <?php
-  if(!isset($_SESSION['username']))
+  if(!isset($_SESSION['customerId']))
   {
 ?>
     <form action="?login=0#login" method="post">
@@ -91,13 +92,19 @@
   }
   else 
   {
+    $statement = $pdo -> prepare("SELECT * FROM Kunden Where KundenNr = ?");
+    $statement -> execute(array($_SESSION['customerId']));
+
+    $row = $statement->fetch();
+
 ?>
-    <h2>Hello, <?php echo $_SESSION['username']; ?>!</h2>
+    <h2>Hello, <?php echo trim($row['Vorname']) . " " . trim($row["Nachname"]); ?>!</h2>
 <?php
   }
 
-  if(isset($_GET["login"]) && $_GET["login"] == 1 && isset($_SESSION["username"])) {
-    unset($_SESSION["customerId"], $_SESSION["username"]);
+  if(isset($_GET["login"]) && $_GET["login"] == 1 && isset($_SESSION["customerId"])) {
+    unset($_SESSION["customerId"]);
+
     header('Location: /toymodels');
   }
 
@@ -107,7 +114,7 @@
 
     if($statement->rowCount() != 0) {
       $row = $statement->fetch();
-      $_SESSION["username"] = trim($row['Vorname']) . " " . trim($row["Nachname"]);
+      //$_SESSION["username"] = trim($row['Vorname']) . " " . trim($row["Nachname"]);
       $_SESSION["customerId"] = $row["KundenNr"];
 
       header('Location: /toymodels#login');
