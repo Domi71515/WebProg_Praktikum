@@ -107,7 +107,9 @@
 <?php
     }
 ?>
-  <p id="endPrice" style="float: right;">Gesamtpreis: <?php echo $gesamtPreis; ?></p>
+  <section>
+  <p>Gesamtpreis: <p id="endPrice"><?php echo $gesamtPreis; ?></p></p>
+  </section>
     </section>
 <?php
   if (isset($_SESSION["customerId"])){
