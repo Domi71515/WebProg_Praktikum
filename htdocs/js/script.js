@@ -1,3 +1,4 @@
+//Toggles Mobile Navigation
 function toggleNav() {
     var d = document.getElementById("mobileNavigation");
     var mobileNav = d.classList.contains("moveIn");
@@ -13,6 +14,7 @@ function toggleNav() {
     }
   }
 
+  //Toggle Description for Articles
   function showDetail(b) {
     var e = document.getElementById(b.id);
     var detail = e.classList.contains("showDetail")
@@ -26,6 +28,7 @@ function toggleNav() {
     }
   }
 
+//Helper function to check if Element is empty -> if empty marks background Red
 function checkNotEmpty(element) 
 {
   if(element.value == "")
@@ -40,6 +43,7 @@ function checkNotEmpty(element)
   updateButton();
 }
 
+//Helper function to check if Element is number -> if is not number marks background red
 function checkIsNumber(element)
 {
   if(element.value == "")
@@ -62,6 +66,7 @@ function checkIsNumber(element)
   updateButton();
 }
 
+//Updates the button, from disabled to enabled, if all inputs are correct!
 function updateButton()
 {
   var firstname = document.getElementsByName("firstname")[0];
@@ -89,6 +94,4 @@ function updateButton()
   });
 
   submit.disabled = errorFound;
-  
-
 }

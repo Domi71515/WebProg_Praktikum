@@ -111,6 +111,7 @@
   {
     if($_GET["register"] == 0)
     {
+      //Get all Post variables
       $firstname = trim($_POST["firstname"]);
       $surename = trim($_POST["surename"]);
       $telefon = trim($_POST["telefon"]);
@@ -120,6 +121,7 @@
       $country = trim($_POST["country"]);
       $postcode = trim($_POST["postcode"]);
 
+      //Extra check if there are not empty
       if($firstname != "" && $surename != "" && $telefon != "" && $company != "" && $address != "" && $location != "" && $country != "" && $postcode != "")
       {
         //GET RANDOM VORGESETZEN
@@ -128,12 +130,15 @@
 
         $PersonalNr = $statement->fetch()["PersonalNr"];
 
+        //Insert new User into Database
         $statement = $pdo->prepare("INSERT INTO Kunden (Firma, Nachname, Vorname, Telefon, Strasse, Ort, PLZ, Land, Kundenbetreuer) VALUES (?,?,?,?,?,?,?,?,?)");
         $statement -> execute(array($company, $surename, $firstname, $telefon, $address, $location, $postcode, $country, $PersonalNr));
 
         $newID = $pdo->lastInsertId();
+        
+        //Create Session for newly created User, so he is logged in right away
         $_SESSION["customerId"] = $newID;
-        $_SESSION["username"] = $firstname . " " . $surename;
+
         echo "<h1>Registration Successfull! Your ID: " . $newID . ". <a href='index.php'>Main</a></h1>";
       }
       else 

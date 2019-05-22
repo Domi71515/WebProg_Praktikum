@@ -1,4 +1,5 @@
 <?php
+//Handles the Timeout of the Shoppingcart
 $session_timeout = 300;
 
 if(!isset($_SESSION['last_visit']))

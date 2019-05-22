@@ -79,7 +79,7 @@
   {
     $gesamtPreis = 0;
 
-    //unset($_SESSION["shoppingcart"]);
+    //Posts all Articles in Shoppingcart
     foreach($_SESSION["shoppingcart"] as $article => $value) {
       $statement = $pdo -> prepare("SELECT * FROM Artikel WHERE ArtikelNr = ?");
       $statement -> execute(array($article));
@@ -113,11 +113,11 @@
   </section>
     </section>
 <?php
+  //If a user is logged in, Checkout button will appear
   if (isset($_SESSION["customerId"])){
 ?>
     <section id="checkout">
         <!--    Form for submitting Buy action -->
-        
         <form method="post" action="?checkout=-1">
           <textarea name="comment" placeholder="Comment"></textarea><br>
           <input type="submit" class="button" value="Proceed to checkout">
@@ -134,13 +134,14 @@
     </section>
     <?php
   }
-  //unset($_SESSION["shoppingcart"]);
   }
   else{
+    //On Checkout
     if($_GET["checkout"] == -1)
     {
       Buy($_POST["comment"]);
     }else {
+      //Get all informations for new Order
       $statement = $pdo -> prepare("SELECT * FROM Auftraege WHERE AuftragsNr = ?");
       $statement -> execute(array($_GET["checkout"]));
 

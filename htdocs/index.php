@@ -32,6 +32,7 @@
     <ul>
       <li><a href="#" alt="Home" class="active">Home</a></li>
 <?php
+  //Disables Register page if user is logged in.
   if(!isset($_SESSION["customerId"])){
 ?>
       <li>|</li>
@@ -44,6 +45,7 @@
       <li>|</li>
       <li><a href="impressum.php" alt="Impressum">Impressum</a></li>
 <?php
+  //Activate Logout button if an User is logged in.
   if(isset($_SESSION["customerId"])){
 ?>
       <li>|</li>
@@ -81,6 +83,7 @@
   <!-- Form for Login, redirects to login.html    -->
   <section id="login">
 <?php
+  //Shows Login-Form if no user is logged in
   if(!isset($_SESSION['customerId']))
   {
 ?>
@@ -92,6 +95,7 @@
   }
   else 
   {
+    //If User is logged in, get Name, and surename. And remove Login button
     $statement = $pdo -> prepare("SELECT * FROM Kunden Where KundenNr = ?");
     $statement -> execute(array($_SESSION['customerId']));
 
@@ -102,16 +106,20 @@
 <?php
   }
 
+  //If youser wants to log out, and there is an active Session, log user out. And Foreward to index.
   if(isset($_GET["login"]) && $_GET["login"] == 1 && isset($_SESSION["customerId"])) {
     unset($_SESSION["customerId"]);
 
     header('Location: /toymodels');
   }
 
+  //Handles the Logging in of an User
   if(isset($_GET["login"]) && $_GET["login"] == 0 && isset($_POST['customerId'])) {
+    //Search User in DAtabase
     $statement = $pdo -> prepare("SELECT * FROM Kunden Where KundenNr = ?");
     $statement -> execute(array($_POST['customerId']));
 
+    //If user found create Session with customer ID
     if($statement->rowCount() != 0) {
       $row = $statement->fetch();
       //$_SESSION["username"] = trim($row['Vorname']) . " " . trim($row["Nachname"]);
@@ -122,6 +130,7 @@
     else
     {
 ?>
+<!-- Display for Errormessage if no user is found -->
     <p class="errorMsgLogin">
       Could not find User! Please Try again!
     </p>
@@ -153,6 +162,7 @@
     <!-- Placeholder for Articles      -->
   
 <?php
+  //All possible combination for searchfilter, Prepares the sql Statement.
   if (isset($_GET['search'], $_GET['filter'])) {
     if($_GET["search"] == "" && $_GET["filter"] != "-1") 
     {
@@ -183,6 +193,7 @@
     }
   }
 
+  //Gets all the rows with previous prepared statement.
   if($statement->rowCount() > 0){
     while($row = $statement->fetch()) {
 ?>
