@@ -88,6 +88,7 @@ function SetValue($article, $amount)
 function Buy($info)
 {
   $auftragsNr = 0;
+  $totalSum = 0;
   if(isset($_SESSION["customerId"]))
   if(isset($_SESSION["shoppingcart"]) && sizeof($_SESSION["shoppingcart"]) > 0)
   {
@@ -106,12 +107,18 @@ function Buy($info)
 
       $statement = $pdo -> prepare("INSERT INTO Auftragspositionen (AuftragsNr, ArtikelNr, Bestellmenge, Verkaufspreis, PositionsNr) VALUES (?,?,?,?,?)");
       $statement -> execute(array($auftragsNr, $key, $value, $row["Listenpreis"], $row["GruppenNr"]));
+      $totalSum += $row["Listenpreis"] * $value;
+
+      $statement = $pdo -> prepare("UPDATE Artikel SET Bestandsmenge = Bestandsmenge - ? WHERE ArtikelNr = ?");
+      $statement -> execute(array($value, $key));
     }
   }
 
   unset($_SESSION["shoppingcart"]);
 
-  header("Location: /toymodels/shoppingcart.php?checkout=" . $auftragsNr);  
+  $totalSum = number_format($totalSum, 2) * 100;
+
+  header("Location: /toymodels/shoppingcart.php?checkout=" . $auftragsNr . "&price=" . $totalSum);  
 }
 
 function getInfoArticle($article)

@@ -147,7 +147,8 @@
       $row = $statement->fetch();
 ?>
   <h3>Ihre Auftrags Nummer: <?php echo $row["AuftragsNr"]; ?></h3>
-  <p>Geplanter Liefertermin: <?php echo $row["Plantermin"]; ?><p>
+  <p>Geplanter Liefertermin: <?php echo $row["Plantermin"]; ?></p>
+  <p>Gesamter Preis: <?php echo number_format($_GET["price"] / 100, 2); ?></p>
 <?php
     }
   }
