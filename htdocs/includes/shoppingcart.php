@@ -143,7 +143,7 @@ function Buy($info)
   //Delete shoppingcart
   unset($_SESSION["shoppingcart"]);
 
-  $totalSum = number_format($totalSum, 2) * 100;
+  $totalSum = number_format($totalSum, 2, ".", "") * 100;
 
   header("Location: /toymodels/shoppingcart.php?checkout=" . $auftragsNr . "&price=" . $totalSum);  
 }
