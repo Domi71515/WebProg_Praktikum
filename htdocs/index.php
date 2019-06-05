@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="css/mobile.css" type="text/css" media="(max-width: 1024px)" />
   <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
   <link rel="shortcut icon" href="favicon.ico">
-  <script src="js/script.js"></script>
+  <script src="js/script.js">
+  </script>
 </head>
 
 <body>
@@ -143,7 +144,7 @@
   <section id="searchfilter">
     <!-- Form for Filters, if selected, it will only show Articels in its section -->
     <form method="get" action="#searchfilter">
-      <input type="search" name="search" placeholder="Search...">
+      <input type="search" name="search" placeholder="Search..." onkeyup="searchItems(this)" />
       <select name="filter">
         <option value="" selected disabled>Please Select...</option>
         <option value="-1">All</option>
