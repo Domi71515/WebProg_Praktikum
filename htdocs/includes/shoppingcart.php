@@ -11,6 +11,9 @@
     }
     //Send Response
     xhr.send(encodeURI('artNr=' + artNr + '&amount=' + amount));
+    
+    //Reload Page after confirm alert
+    location.reload();
   }
 
   function change(artNr){
@@ -30,6 +33,9 @@
     document.getElementById(artNr).getElementsByClassName("sumPrice")[0].innerText = listenpreis * amount;
 
     changeSum();
+
+    //Reload page after update Sum
+    location.reload();
   }
 
   function changeSum() 
@@ -76,8 +82,6 @@ function Add($article, $amount)
   {
     $_SESSION["shoppingcart"][$article] = $amount;
   }
-
-  echo "Done";
 }
 
 //Removes item from Shoppingcart
@@ -114,7 +118,7 @@ function Buy($info)
   $totalSum = 0;
   //Chekcs if user is logged in and items are in Shoppingcart
   if(isset($_SESSION["customerId"]))
-  if(isset($_SESSION["shoppingcart"]) && sizeof($_SESSION["shoppingcart"]) > 0)
+  if(isset($_SESSION["shoppingcart"]) && sizeof($_COOKIE["shoppingcart"]) > 0)
   {
     require("mysql.php");
     //2015-05-30

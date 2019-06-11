@@ -16,11 +16,12 @@
   <link rel="stylesheet" href="css/mobile.css" type="text/css" media="(max-width: 1024px)" />
   <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
   <link rel="shortcut icon" href="favicon.ico">
-  <script src="js/script.js">
-  </script>
+  <script src="js/script.js"></script>
+  <script src="includes/shopping-cart-template.js"></script>
 </head>
 
 <body>
+  <?php include("includes/shopping-cart-template.php"); ?>
 
   <!-- Navigation -->
   <nav>
@@ -42,7 +43,7 @@
   }
 ?>
       <li>|</li>
-      <li><a href="shoppingcart.php" alt="Shoppingcart">Shoppingcart</a></li>
+      <li><shopping-cart></shopping-cart></li>
       <li>|</li>
       <li><a href="impressum.php" alt="Impressum">Impressum</a></li>
 <?php
