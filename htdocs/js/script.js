@@ -106,8 +106,6 @@ function searchItems(searchForm) {
   if(searchGroup == ''){
       searchGroup = -1;
   }
-
-  console.log(searchString + " " + searchGroup);
   
   fetch('includes/search.php?search=' + searchString + '&filter=' + searchGroup)
   .then((res) => res.json())
@@ -115,38 +113,11 @@ function searchItems(searchForm) {
     let output = '';
     data.forEach(function(post) {
         output += `
-        <article>
-        <section class="article-grid">
-        <section class="img">
-          <img class="img" src="./img/img1.jpg">
-        </section>
-        <section class="text" onClick="showDetail(${post.ArtikelNr}_description)">
-            <h2>${post.ArtikelName}</h2>
-            <p>Price: ${post.Listenpreis}$</p>
-            <p>Size: ${post.Massstab}</p>
-            <p>Art-Num: ${post.ArtikelNr} - ${post.GruppenName}</p>
-        </section>
-    </section>
-
-      <section id="${post.ArtikelNr}_description" class="description" >
-        <section class="textDescription">
-            <h2>Description</h2>
-            <p>${post.Beschreibung}</p>
-        </section>
-        <section id="buy">
-          <h2>Quantity: ${post.Bestandsmenge}</h2>
-        
-          <input type="number" id="${post.ArtikelNr}" value="1"/>
-          <input type="submit" class="button" value="Add to shoppingcart" onClick="buy('${post.ArtikelNr}')">
-          
-        </section>
-      </section>
-    
-    </article>
+        <option>${post.ArtikelName}</option>
         `;
     });
 
-    document.getElementById('articleMain').innerHTML = output;
+    document.getElementById('browse').innerHTML = output;
   });
 
 }

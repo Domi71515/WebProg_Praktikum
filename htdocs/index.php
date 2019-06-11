@@ -144,7 +144,9 @@
   <section id="searchfilter">
     <!-- Form for Filters, if selected, it will only show Articels in its section -->
     <form method="get" action="#searchfilter">
-      <input type="search" name="search" placeholder="Search..." onkeyup="searchItems(this)" />
+      <input list="browse" type="search" name="search" placeholder="Search..." onkeyup="searchItems(this)" />
+      <datalist id="browse">
+      </datalist>
       <select name="filter">
         <option value="" selected disabled>Please Select...</option>
         <option value="-1">All</option>

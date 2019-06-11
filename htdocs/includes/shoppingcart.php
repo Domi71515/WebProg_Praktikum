@@ -7,6 +7,7 @@
     xhr.open('POST', '/toymodels/includes/shoppingcart.php?buy=1');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
+      alert(artNr + ": " + amount + "x");
     }
     //Send Response
     xhr.send(encodeURI('artNr=' + artNr + '&amount=' + amount));
